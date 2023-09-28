@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Switch, Routes } from 'react-router-dom';
 import Login from './login';
-import Book from './book';
-import Books from './books';
+import Book from './carro';
+import Books from './carros';
+import Login2 from './login2';
 
 
 function App() {
@@ -13,8 +14,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/books/id" element={<Book />} />
+          <Route path="/carros" element={<Books />} />
+          <Route path="/carros/:modelo" element={<Book />} />
+          <Route path="/1" element={<Login2 />} />
         </Routes>
       </BrowserRouter>
     </div>

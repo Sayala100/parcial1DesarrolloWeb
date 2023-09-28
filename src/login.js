@@ -4,44 +4,36 @@ import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './login.css';
+import { Link } from "react-router-dom";
+import Login2 from './login2';
 
 
 function Login() {
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState({name:"", password:""})
   const [emailValid, setEmailValid] = useState(true);
-  const [passwordValid, setPasswordValid] = useState(true);
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  
 
   const handleEmailChange = ((e) => {
     setFormValues({...formValues, email: e.target.value})
     });
 
-const handlePasswordChange = ((e) => {
-    setFormValues({...formValues, password: e.target.value})
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/;
-    const isPasswordValid = passwordRegex.test(e.target.value);
-    setPasswordValid(isPasswordValid);
-
-    if (!isPasswordValid) {
-        setPasswordErrorMessage("Your password should be have numbers and letters and should be at least 9 char long")
-      }
-      else {
-        setPasswordErrorMessage("")
-      }
-    });
-
+    
 
 
   const handleFormSubmit = (() => {
     
     const emailValidation = formValues.email.includes("@uniandes.edu.co");
     setEmailValid(emailValidation);
+    var email = formValues.email;
 
     if (emailValidation) {
         handlePost();
         id = id + 1;
-        navigate('/books');
+        //navigate('/1');
+
+    
+
     }
     else {
         alert("Please enter a valid email address");
@@ -50,30 +42,21 @@ const handlePasswordChange = ((e) => {
 
     const [dataPost, setDataPOST] = useState("{}");
     const [dataGET, setDataGet] = useState("{}")
-    const API_KEY = "a1908270"
+
+    
     var id = 1;
-    var exampleJSON = { "id": id, "name": formValues.name, "password": formValues.password}
+    var rol = true;
+    var exampleJSON = { "id": id, "email": formValues.name, "password": "", "rol": rol}
 
     async function handlePost() {
-        try {
-          const response = await fetch("https://my.api.mockaroo.com/login.json?key=" + API_KEY + "&id=" + exampleJSON.id, {
-            method: "POST",
-            body: JSON.stringify(exampleJSON),
-            headers: { "X-Requested-With": "XMLHttpRequest" }
-          });
-      
-          if (response.ok) {
-            const dataa = await response.json();
-            console.log("POST request successful:", dataa);
-            setDataPOST(JSON.stringify(dataa));
-          } else {
-            console.error("POST request failed with status:", response.status);
-            // You can handle error cases here, such as showing an error message to the user.
-          }
-        } catch (error) {
-          console.error("Error making POST request:", error);
-          // Handle other errors, such as network issues.
+        id = id + 1;
+        if (id%2) {
+            rol = false;
         }
+        else {
+            rol = true;
+        }
+        console.log(exampleJSON);
       }
       
       
@@ -97,34 +80,20 @@ const handlePasswordChange = ((e) => {
               style = {{borderColor: emailValid ? "" : "red"}}
               />
             { emailValid ? (
-              <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
+              <Form.Text className="text-muted"></Form.Text>
             ) : (
               <Form.Text className="text-muted">Please enter a valid email address</Form.Text>
             )}
           </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control 
-              type="password" 
-              placeholder="Password"
-              onChange={handlePasswordChange} 
-              value={formValues.password}
-              style={{ borderColor: passwordValid ? '' : 'red'}} 
-
-            />
-            {passwordValid ? (
-               <Form.Text className="text-muted">Your password should be have numbers and letters and should be at least 9 char long</Form.Text>
-              ) : (
-                <Form.Text className="text-muted">{passwordErrorMessage}</Form.Text>
-              )}
-
-          </Form.Group>
+          <p className="mb-4 text-align-left">¿Olvidaste el correo electronico?</p>
+          <row className="mb-4">
+          <p>Crear cuenta</p>
+          <Link to={"/1"}> 
+          <Button variant="primary" onClick={handleFormSubmit}>Siguiente</Button>
+           </Link> 
           
-
-          <Button variant="primary" onClick={handleFormSubmit}>
-            Submit
-          </Button>
+          
+          </row>
         </Form>
         </div>
       </div>
