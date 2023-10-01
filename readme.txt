@@ -1,4 +1,4 @@
-Hola, primero que todo queria aclarar que para poder implementar la internacionalizaicon y hacer de la mejor manera el readme decidi corregir y terminar el parcial que habia enviado.
+Hola, primero que todo queria aclarar que para poder implementar la internacionalizaicon y hacer de la mejor manera el readme decidi corregir y terminar el parcial que habia enviado; esto se realizo con ayuda de internet.
 
 Paso a paso:
 1. Clonar el proyecto
