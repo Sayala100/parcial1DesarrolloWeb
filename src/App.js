@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/carros" element={<Books />} />
           <Route path="/carros/:modelo" element={<Book />} />
-          <Route path="/1" element={<Login2 />} />
+          <Route path="/1/:email" element={<Login2 />} />
         </Routes>
       </BrowserRouter>
     </div>

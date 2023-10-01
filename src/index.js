@@ -5,12 +5,16 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
+import {IntlProvider} from 'react-intl';
+import localeEsMessages from "./locales/es";
+import { FormattedMessage } from 'react-intl';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <IntlProvider locale="es-Es" messages= {localeEsMessages}>
     <App />
-  </React.StrictMode>
+  </IntlProvider>
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -1,0 +1,31 @@
+.car-details-container {
+    display: flex;
+    align-items: center;
+}
+  
+.car-image {
+flex: 1;
+padding: 20px; /* Adjust padding as needed */
+
+}
+
+.car-image img {
+max-width: 100%;
+height: auto;
+
+}
+
+.car-details {
+flex: 2; /* Adjust flex value to control the width of the information section */
+padding: 20px; /* Adjust padding as needed */
+}
+
+.car-maker-info {
+display: flex;
+align-items: baseline;
+}
+
+h4 {
+margin-right: 200px;
+color: red
+}

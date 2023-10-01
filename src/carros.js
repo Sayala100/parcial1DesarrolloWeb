@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { FormattedMessage } from 'react-intl';
 
 function Carros() {
   const [carrosData, setCarrosData] = useState([]);
@@ -20,12 +21,7 @@ function Carros() {
       });
   }, []);
 
-  const handleFormSubmit = (() => {
-    
-    
-    navigate('/1');
-
-    });
+ 
 
 
   return (
@@ -33,17 +29,19 @@ function Carros() {
       <div className="row">
         {carrosData.map((carro) => (
           <div key={carro.id} className="col-md-4 p-3">
+          <Link to={"/carros/" + carro.carModel}>
             <Card>
               <Card.Img variant="top" src={carro.image} alt={carro.partName} />
               <Card.Body>
                 <Card.Title>{carro.partName}</Card.Title>
-                <Link to={"/carros/" + carro.carModel}>
-                {carro.carModel}
-                </Link>
+                
+                <Card.Text>{carro.carModel}</Card.Text>
+                
                 <Card.Text>{carro.carMaker}</Card.Text>
                 <Card.Text>{carro.price}  -  {carro.carYear}</Card.Text>
               </Card.Body>
             </Card>
+            </Link>
           </div>
         ))}
       </div>
